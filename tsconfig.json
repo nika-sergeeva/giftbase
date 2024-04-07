@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+     "sourceMap": true,
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "target": "es5",
+      "allowJs": true,
+      "moduleResolution": "node",
+      // "module": "ESNext",
+      "baseUrl": ".",
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "jsx": "react-jsx",
+      "paths": {
+        "*": ["./src/*"]
+      },
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"],
+    "ts-node": {
+      "compilerOptions": {
+        "module": "CommonJS"
+      }
+    }
+  }
