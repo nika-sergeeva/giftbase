@@ -1,14 +1,12 @@
+import { Counter } from "./components/Counter";
 
-
-interface AppProps {
- className?: string;
-}
-
-export const App = ({className}: AppProps) => {
-
+ const App = () => {
+console.log('Hello!')
  return (
 <div>
-    something
+   <Counter />
 </div>
  );
 }
+
+export default App

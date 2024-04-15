@@ -1,27 +1,26 @@
-import path from 'path';
 import webpack  from 'webpack';
-import { buildLoaders } from './config/build/buildLoaders';
+import { buildWebpack } from './config/build/buildWebpack';
+import { BuildEnv, BuildPaths } from './config/build/types/config';
+import path from 'path';
 
-module.exports = {
-    mode: 'development',
-  entry: path.resolve(__dirname, 'src/index.tsx'),
-  devtool: 'inline-source-map',
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: '[name].[contenthash].bundle.js',
-    clean: true,
-  },
-  module: {
-    rules: buildLoaders(),
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    preferAbsolute: true,
-    mainFiles: ['index'],
-  },
-  devServer:{
-    static: path.join(__dirname, "build"),
-    port: 6000,
+export default (env: BuildEnv) => {
+  const paths: BuildPaths = {
+    entry: path.resolve(__dirname, 'src', 'index.tsx'),
+    output: path.resolve(__dirname, './build'),
+    html: path.resolve(__dirname, 'public', 'index.html')
   }
+
+  const mode = env.mode || 'development';
+  const isDev = mode === 'development';
+
+  const PORT = env.port || 3000;
+  
+  const config: webpack.Configuration = buildWebpack({
+    mode,
+    paths,
+    port: PORT,
+    isDev,
+  });
+
+  return config;
 };
