@@ -7,9 +7,7 @@ import './styles/index.scss';
 import { useTheme } from "./styles/theme/useTheme";
 
  const App = () => {
-   
-   const {theme, toggleTheme} = useTheme();
-
+   const {theme, toggleTheme} = useTheme()
  return (
 <div className={`app ${theme}`}>
    <button onClick={toggleTheme}>TOGGLE THEME</button>
