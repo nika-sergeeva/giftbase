@@ -1,9 +1,13 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+@import "reset";
+@import "variables/global.scss";
+@import "themes/light.scss";
+@import "themes/dark";
 
 .app {
-    font-size: 30px;
+    font: var(--font-m);
+
+    background: var(--bg-color);
+    color: var(--primary-color);
+
+    min-height: 100vh;
 }

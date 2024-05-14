@@ -1,15 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import { Counter } from "./components/Counter";
-import './styles/index.scss'
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { MyListAsync } from "../pages/MyList/MyList.async";
 import { ForFriendAsync } from "../pages/ForFriend/ForFriend.async";
 import { Link } from "react-router-dom";
+import './styles/index.scss';
+import { useTheme } from "./styles/theme/useTheme";
 
  const App = () => {
-console.log('Hello!')
+   
+   const {theme, toggleTheme} = useTheme();
+
  return (
-<div className="app">
+<div className={`app ${theme}`}>
+   <button onClick={toggleTheme}>TOGGLE THEME</button>
    <Link to={'/'}>My List</Link>
    <Link to={'/forfriend'}>For</Link>
    <Suspense fallback={''}>
