@@ -5,11 +5,12 @@ import { ForFriendAsync } from "../pages/ForFriend/ForFriend.async";
 import { Link } from "react-router-dom";
 import './styles/index.scss';
 import { useTheme } from "./styles/theme/useTheme";
+import { classNames } from "../helpers/classNames";
 
  const App = () => {
    const {theme, toggleTheme} = useTheme()
  return (
-<div className={`app ${theme}`}>
+<div className={classNames('app', {}, [theme])}>
    <button onClick={toggleTheme}>TOGGLE THEME</button>
    <Link to={'/'}>My List</Link>
    <Link to={'/forfriend'}>For</Link>
